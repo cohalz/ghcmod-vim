@@ -46,7 +46,15 @@ function! ghcmod#command#type(force) "{{{
   let b:ghcmod_type = ghcmod#type#new(l:types, ghcmod#highlight_group())
   call b:ghcmod_type.highlight()
 
-  echo b:ghcmod_type.type()
+  let l:mchar = matchstr(getline('.'), '.', col('.')-1)
+  if matchstr(mchar,"[a-zA-Z0-9_'.]") != ""
+    let l:m = expand('<cword>')
+  else 
+    let l:m = expand('<cWORD>')
+  endif
+  
+  echo(l:m . " :: " . b:ghcmod_type.type())
+  " echo b:ghcmod_type.type()
 endfunction "}}}
 
 function! ghcmod#command#type_clear() "{{{
