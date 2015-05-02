@@ -74,5 +74,5 @@ let b:undo_ftplugin .= ' | unlet b:did_ftplugin_ghcmod'
 
 " Ensure syntax highlighting for ghcmod#detect_module()
 syntax sync fromstart
-
+noremap <buffer> <Tab> :GhcModType<CR>
 " vim: set ts=2 sw=2 et fdm=marker:
